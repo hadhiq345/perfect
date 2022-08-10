@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-p1&-8%ozw8@t^9_25k!gen%1*e)2m+_#1zdp+@pem&*pthwr79
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pg'
+    'pg',
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +82,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE' : 'django.db.backends.mysql',
+#         'NAME' : 'perfect',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin123',
+#         'HOST': 'perfectdbrds.cax85n4vxom5.us-east-1.rds.amazonaws.com'
 
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

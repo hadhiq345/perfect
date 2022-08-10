@@ -1,3 +1,5 @@
+import email
+from tkinter import CASCADE
 from unicodedata import name
 from django.db import models
 
@@ -12,7 +14,8 @@ class Room(models.Model):
 
 class Guest(models.Model):
     name = models.CharField(max_length=200)
-    mobile_no = models.CharField(max_length=10)    
+    mobile_no = models.CharField(max_length=10) 
+    email = models.EmailField(blank=True, null=True)  
     date_of_joining = models.DateField(auto_now_add=True)
 
     def __str__(self) -> str:
@@ -25,3 +28,11 @@ class RoomGuest(models.Model):
 
     def __str__(self) -> str:
         return "{} - {}".format(self.room, self.guest)
+
+class PaymentDetail(models.Model):
+    amount = models.PositiveBigIntegerField()
+    guest = models.ForeignKey(Guest, on_delete=models.PROTECT)
+    date_of_payment = models.DateField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return "{} -{} - {}" .format(self.amount, self.guest, self.date_of_payment)
