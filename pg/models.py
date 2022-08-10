@@ -7,6 +7,7 @@ from django.db import models
 class Room(models.Model):
     room_no = models.PositiveIntegerField(unique=True)
     no_of_bed = models.IntegerField()
+    tv_available = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return str(self.room_no)
